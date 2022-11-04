@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             String message= "Hola que tal";
             os.write(message.getBytes());
             os.close();
+            actualizaLeerContenidoArchivo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void actualizaLeerContenidoArchivo(){
         File path = getFilesDir();
         File file = new File(path,"dades.txt");

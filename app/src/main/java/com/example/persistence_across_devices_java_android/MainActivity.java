@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Environment;
 import android.renderscript.ScriptGroup;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,12 +31,17 @@ public class MainActivity extends AppCompatActivity {
             String message= "Hola que tal";
             os.write(message.getBytes());
             os.close();
-            ActualizaLeerContenidoArchivo();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        b.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                actualizaArchivo();
+                ActualizaLeerContenidoArchivo();
+            }
+        });
     }
+
     public void ActualizaLeerContenidoArchivo(){
         File path = getFilesDir();
         File file = new File(path,"dades.txt");
@@ -55,5 +61,15 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(text.toString());
     }
 
-  
+    public void actualizaArchivo(){
+        try {
+            OutputStream os = openFileOutput("dades.txt", MODE_PRIVATE);
+            TextView tv = findViewById(R.id.editTextTextPersonName);
+            String message = String.valueOf(tv.getText());
+            os.write(message.getBytes());
+            os.close();
+        }catch(Exception e){
+
+        }
+    }
 }

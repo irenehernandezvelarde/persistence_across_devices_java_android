@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 actualizaArchivo();
-                ActualizaLeerContenidoArchivo();
+                actualizaLeerContenidoArchivo();
             }
         });
     }
 
-    public void ActualizaLeerContenidoArchivo(){
+    public void actualizaLeerContenidoArchivo(){
         File path = getFilesDir();
         File file = new File(path,"dades.txt");
         StringBuilder text = new StringBuilder();
